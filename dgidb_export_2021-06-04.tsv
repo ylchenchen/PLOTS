@@ -1,0 +1,21 @@
+search_term	match_term	match_type	gene	drug	interaction_types	sources	pmids
+ACACB	ACACB	Definite	ACACB	FIRSOCOSTAT	allosteric modulator	GuideToPharmacology	""
+ACACB	ACACB	Definite	ACACB	PF-05175157	""	TTD	""
+ACACB	ACACB	Definite	ACACB	METFORMIN	""	TTD	""
+ADCY5	ADCY5	Definite	ADCY5	CHEMBL401844	""	DTC	18630896
+CCR5	CCR5	Definite	CCR5	MARAVIROC	antagonist	DTC|TdgClinicalTrial|ChemblInteractions|TEND|GuideToPharmacology|PharmGKB|TTD	16298345|19692476|19098484|11752352|17139284|17016423
+CCR5	CCR5	Definite	CCR5	ANCRIVIROC	antagonist	GuideToPharmacology	""
+CCR5	CCR5	Definite	CCR5	LERONLIMAB	antagonist|antibody	ChemblInteractions|GuideToPharmacology|TTD	11134270|31903790
+CCR5	CCR5	Definite	CCR5	INCB-9471	antagonist	ChemblInteractions|TTD	""
+CCR5	CCR5	Definite	CCR5	CENICRIVIROC	antagonist	TdgClinicalTrial|ChemblInteractions|GuideToPharmacology|TTD	""
+CCR5	CCR5	Definite	CCR5	APLAVIROC HYDROCHLORIDE	antagonist	ChemblInteractions	""
+CCR5	CCR5	Definite	CCR5	CHEMBL41275	antagonist	GuideToPharmacology	""
+CCR5	CCR5	Definite	CCR5	VICRIVIROC MALEATE	antagonist	ChemblInteractions	""
+CCR5	CCR5	Definite	CCR5	PF-04634817	antagonist	ChemblInteractions	""
+CCR5	CCR5	Definite	CCR5	VICRIVIROC	antagonist	TdgClinicalTrial|GuideToPharmacology|TTD	17243065|18495779
+CCR5	CCR5	Definite	CCR5	AZD5672	antagonist	ChemblInteractions|GuideToPharmacology	""
+CCR5	CCR5	Definite	CCR5	CHEMBL2018969	antagonist	GuideToPharmacology	""
+CCR5	CCR5	Definite	CCR5	APLAVIROC	antagonist	GuideToPharmacology	""
+CCR5	CCR5	Definite	CCR5	CHEMBL207004	antagonist	DTC|GuideToPharmacology|TTD	26451468
+CCR5	CCR5	Definite	CCR5	PF-232798	""	TTD	""
+LPIN1	LPIN1	Definite	LPIN1	ROSIGLITAZONE	""	PharmGKB	18693052

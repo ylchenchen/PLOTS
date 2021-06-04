@@ -1,0 +1,75 @@
+---
+title: "GSE17901_cor"
+date: "`r Sys.Date()`"
+author: "ylchen"
+output:
+  rmdformats::downcute:
+    self_contained: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,warning = F,message = F,collapse=TRUE)
+```
+
+# 一、载入数据
+* ggcor 为绘图关键包，通过本地安装，建议使用旧版，源于厚缊老师
+* 基本介绍 https://mp.weixin.qq.com/s/mLImkisEMUZhPLOoPFlacA
+
+```{r,collapse=TRUE}
+rm(list =ls())
+options(stringsAsFactors = F)
+#加载依赖关系包
+#library('devtools')
+#devtools::install_local("D:/生信技能树/ggcor-master.zip")
+library(vegan)
+library(ggcor)
+library(dplyr)
+library(ggplot2)
+#数据源于wgcna结果
+load(file = 'cor_input.rdata')
+head(MEs0)
+```
+
+# 二、数据处理
+```{r}
+# 相关性分析
+#对分析结果按R和P值重新赋值
+mantel <- mantel_test(MEs0, MEs0,
+                      spec.select = list(Times = 1:13,
+                                         Dissection = 1:13),
+                       mantel.fun = "mantel.randtest") %>%
+  mutate(r = cut(r, 
+                 breaks = c(-Inf, -0.6-0.6, Inf),
+                 labels = c("> 0.6 or < -0.6", "-0.6-0.6"),
+                 right = FALSE),
+         p.value = cut(p.value, 
+                       breaks = c(-Inf, 0.01, 0.05, Inf),
+                       labels = c("< 0.01", "0.01-0.05", ">=0.05"),
+                       right = FALSE))
+
+# 此数据集绘制图形左方，指定标签，线条颜色粗细
+head(mantel)
+
+```
+
+# 三、绘制组合图
+* 实际上为图形拼凑，相关性分析quickcor;geom_square定义正方形;add_link左下方连接线
+* 连接线标记包括标记点和群落的文本标签，标记点(env.point)，通过extra_params()函数进行设置
+* 若自定义右方注释，用guides()
+* http://houyun.xyz/post/2020/02/07/ggcor/
+
+```{r}
+#绘制组合图
+f3 <- quickcor(MEs0, type = "upper") + #type图形右上方lower
+  geom_square(inherit.aes = TRUE) +
+  add_link(mantel, 
+           mapping = aes(colour = p.value, size = r),
+           diag.label = TRUE) +
+  scale_size_manual(values = c(1, 3, 5)) +# 直线大小比例
+  geom_diag_label(angle = 0)+ #对角线标签角度
+  remove_axis("y")+#移除y轴标签
+  scale_color_manual(values=c("#FF8000","#56B4E9","#808A87"))#直线颜色
+
+f3
+#ggsave(f3,filename = "fig_3.pdf",width = 10,height = 8)
+```
+
